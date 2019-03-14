@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import logo from './Twitter.png';
 import './usercard.css';
 //var tweets=;
 class Usercard extends Component {
-  constructor(props){
-    super(props);
-  }
-  
   render() {
     return (
-      <div class="usercard" >
+      <div className="usercard" >
         <h1>{this.props.user}</h1>
+        <div className="img"></div>
+        <div className="divtag">
+          <h3>{this.props.id}</h3>
+        </div>
       </div>
+
     );
   }
 }
