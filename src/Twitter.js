@@ -65,8 +65,8 @@ class Twitter extends Component {
             <div className="USERCARD">
               <Usercard user={this.state.user} id={this.state.id}>
               </Usercard>
-                  <input type="text" name="top" placeholder={this.state.Pplh} value={this.state.value} onChange={this.handleChange1} />
-                  <button id="button" type="button" value="Submit" className="btn btn-primary " onClick={this.onTweet}>Submit</button>
+              <input type="text" name="top" placeholder={this.state.Pplh} value={this.state.value} onChange={this.handleChange1} />
+              <button id="button" type="button" value="Submit" className="btn btn-primary " onClick={this.onTweet}>Submit</button>
             </div> 
             <div id="Tweets">
               <div>
