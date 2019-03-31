@@ -1,0 +1,44 @@
+.Twitter {
+  text-align: center;
+}
+
+.Twitter-logo {
+  height: 2em;
+  pointer-events: none;
+}
+
+.Twitter-header {
+  background-color: #282c34;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  flex-wrap: wrap;
+}
+
+.users{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form{
+  display: flex;
+}
+
+.Twitter-link {
+  color: #61dafb;
+}
+.body{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.USERCARD{
+  width: 35%;
+}
+
+#Tweets{
+  width: 100%
+}
