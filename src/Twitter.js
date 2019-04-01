@@ -4,6 +4,7 @@ import './Twitter.css';
 import Tweet from './tweet';
 import Usercard from './usercard';
 
+
 class Twitter extends Component {
   constructor(props){
     super(props);
@@ -13,24 +14,51 @@ class Twitter extends Component {
       Pplh:"tweet here",
       value:"",
       tweets:[/*{user:"Ari",id:"@Aribo",txt:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},{user:"Richy",id:"@Elpelos",txt:"LMAO"}*/],
-      users:[{user:"Richy", id:"@elbuen", img:"./richy.jpg"},{user:"Ariana", id:"@FancyPupper", img:"./ari.jpg"}]
+      users:[{user:"Richy", id:"@elbuen", img:"./richy.jpg"},{user:"Ariana", id:"@FancyPupper", img:"./ari.jpg"}],
+      hits: [],
     }
     this.handleChange1 = this.handleChange1.bind(this);
     this.onTweet = this.onTweet.bind(this);
   }
+
+  componentDidMount() {
+    fetch('https://still-garden-88285.herokuapp.com/draft_tweets')
+      .then(response => response.json())
+      .then(data => this.setState({ hits: data.draft_tweets }));
+  }
+
   handleChange1(event){
     this.setState({value:event.target.value})
   }
+
   onTweet(event){
     //alert("WAAAAA");
     let auxUser=this.state.user;
     let auxid=this.state.id;
     let auxvalue=this.state.value;
     let tweets=this.state.tweets;
-    tweets.push({user:auxUser, id:auxid,txt:auxvalue});
+    tweets.push(
+      {
+        user: auxUser, 
+        id: auxid,
+        txt: auxvalue
+      }
+    );
     this.setState({tweets});
+    fetch("https://still-garden-88285.herokuapp.com/draft_tweets", {
+              method: "post",
+              body: JSON.stringify({ "user_name": auxUser, "description":auxvalue }),
+               headers:{
+                 'Content-Type': 'application/json'
+                }
+              })
+            .then(function(data) {
+          console.log("Request succeeded with  response", data);
+           })
+       .catch(function(error) {
+           console.log("Request failed", error);
+         });
   }
-
   userChange = (event) => {
     let val = event.target.value;
     console.log(val);
@@ -70,7 +98,9 @@ class Twitter extends Component {
             </div> 
             <div id="Tweets">
               <div>
-                <Tweet txt={this.state.tweets}></Tweet>
+                <Tweet 
+                  Tweets={this.state.hits}
+                ></Tweet>
               </div>
               </div>
           </div>

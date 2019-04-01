@@ -39,3 +39,10 @@ h3{
 	-webkit-transform:scale(1.5);
 	transform: scale(1.5);
 }
+.avatar{
+	width: 4em;
+	height: 4em;
+	margin:.6em;
+	border-radius: 100%;
+	align-self: center;
+}

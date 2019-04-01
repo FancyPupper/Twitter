@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Twitter from './Twitter';
 import * as serviceWorker from './serviceWorker';
 import Twitter from './Twitter.js';
 

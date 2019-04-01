@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import './tweet.css';
-//var tweets=;
+
 class Tweet extends Component {
   render() {
-    let wa=this.props.txt.map((txtt)=>{
+    let tweet=this.props.Tweets.map((Tweet)=>{
       return(
-        <div className="card" >
+        <div className="card" key={Tweet.id}>
             <div className="top">
-              <div className="img"></div>
-              <h1>{txtt.user}</h1>
-              <h3>{txtt.id}</h3>
+              <h3>{Tweet.id}</h3>
+              <img className="avatar" src={Tweet.avatar}alt=""/>
+              <h1>{Tweet.user_name}</h1>
+              <h3>{Tweet.created_at}</h3>
             </div>
             <div className="container">
-            <p>{txtt.txt}</p>
+            <p>{Tweet.description}</p>
           </div>
         </div>)
     })
     return (
       <div>
-        {wa}
+        {tweet}
       </div>
     );
   }
